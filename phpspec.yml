@@ -1,0 +1,7 @@
+suites:
+  wargaming-euclidean:
+    namespace: Shrikeh\Precision
+    src_path: src/
+    spec_path: .
+
+formatter.name: pretty

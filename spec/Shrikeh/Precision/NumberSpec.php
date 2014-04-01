@@ -2,9 +2,9 @@
 
 namespace spec\Shrikeh\Precision;
 
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-use Shrikeh\Precision\Number;
+use \PhpSpec\ObjectBehavior;
+use \Prophecy\Argument;
+use \Shrikeh\Precision\Number;
 
 class NumberSpec extends ObjectBehavior
 {
