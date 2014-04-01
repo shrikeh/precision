@@ -73,7 +73,7 @@ class Number
         return new self($diff, $scale);
     }
 
-    public function sub(Number $precision, $scale = null)
+    public function subtract(Number $precision, $scale = null)
     {
         $scale = $this->scale($scale);
         $result = bcsub(

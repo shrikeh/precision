@@ -71,7 +71,7 @@ class NumberSpec extends ObjectBehavior
     {
         $this->beConstructedWith(121.9201347);
         $precision = new Number(46.981, 3);
-        $this->sub($precision)->shouldMatchPrecision('74.94');
+        $this->subtract($precision)->shouldMatchPrecision('74.94');
     }
 
     function it_lets_me_add_to_it()
