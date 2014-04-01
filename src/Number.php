@@ -28,17 +28,37 @@ class Number
         return $this->getValue();
     }
 
-    public function getValue()
+    public function getValue($scale = null)
     {
         return $this->round(
             $this->value,
-            $this->scale()
+            $this->scale($scale)
         );
     }
 
     public function getScale()
     {
         return $this->scale;
+    }
+
+    public function isEqualTo(Number $number, $scale = null)
+    {
+        return ($this->compare($number, $scale) === 0);
+    }
+
+    public function isGreaterThan(Number $number, $scale = null)
+    {
+        return ($this->compare($number, $scale) === 1);
+    }
+
+    public function isLessThan(Number $number, $scale = null)
+    {
+        return ($this->compare($number, $scale) === -1);
+    }
+
+    public function compare(Number $number, $scale = null)
+    {
+        return bccomp($this->getValue(), $number->getValue(), $this->scale($scale));
     }
 
     public function add(Number $precision, $scale = null)

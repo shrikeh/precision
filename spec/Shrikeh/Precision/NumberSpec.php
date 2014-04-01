@@ -17,7 +17,49 @@ class NumberSpec extends ObjectBehavior
     function it_gives_me_back_a_clean_value()
     {
         $this->beConstructedWith(121.000000);
-        $this->getValue()->shouldReturn('121.00');
+        $this->getValue(0)->shouldReturn('121');
+    }
+
+    function it_returns_one_when_it_is_larger()
+    {
+        $this->beConstructedWith(121.9201347);
+        $precision = new Number(121.914999);
+        $this->compare($precision)->shouldReturn(1);
+    }
+
+    function it_returns_minus_one_when_it_is_smaller()
+    {
+        $this->beConstructedWith(121.9201347);
+        $precision = new Number(121.9251347);
+        $this->compare($precision)->shouldReturn(-1);
+    }
+
+    function it_returns_zero_when_comparing_equally()
+    {
+        $this->beConstructedWith(121.9201347);
+        $precision = new Number(121.9201347);
+        $this->compare($precision)->shouldReturn(0);
+    }
+
+    function it_returns_true_when_it_is_greater_than()
+    {
+        $this->beConstructedWith(121.9201347);
+        $precision = new Number(121.914999);
+        $this->isGreaterThan($precision)->shouldReturn(true);
+    }
+
+    function it_returns_true_when_it_is_less_than()
+    {
+        $this->beConstructedWith(121.9201347);
+        $precision = new Number(121.9251347);
+        $this->isLessThan($precision)->shouldReturn(true);
+    }
+
+    function it_returns_true_when_it_is_equal_to()
+    {
+        $this->beConstructedWith(121.9201347);
+        $precision = new Number(121.9201347);
+        $this->isEqualTo($precision)->shouldReturn(true);
     }
 
     function it_throws_an_exception_if_i_give_it_an_invalid_scale()
