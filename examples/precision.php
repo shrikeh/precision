@@ -1,17 +1,19 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$di = new Pimple();
+$container = new Shrikeh\Precision\Precision();
 
-$di['calculator'] = function($c) {
-    return new \Shrikeh\Precision\Calculator\BCMath();
-};
+$calculator = $container['calculator'];
 
-$calculator = $di['calculator'];
 
 $number = $calculator(23);
 
-var_dump(bccomp(1, 1.1, 1));
+$multiply = $calculator(7);
 
+$result = $number->multiply($multiply);
 
+echo $result;
 
+$zero = $calculator(0);
+
+echo $result->compare($zero);

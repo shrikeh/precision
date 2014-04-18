@@ -12,22 +12,22 @@ use \Shrikeh\Precision\Number\FloatingPoint;
 class FloatingPointSpec extends ObjectBehavior
 {
 
-    function it_gives_me_back_the_number_i_gave_it()
+    function it_gives_me_back_the_number_i_gave_it(Calculator $calculator)
     {
-        $this->beConstructedWith(121.9201347);
+        $this->beConstructedWith($calculator, 121.9201347);
         $this->getValue()->shouldReturn('121.9201347');
     }
 
-    function it_gives_me_back_a_clean_value()
+    function it_gives_me_back_a_clean_value(Calculator $calculator)
     {
-        $this->beConstructedWith(121.000000);
+        $this->beConstructedWith($calculator, 121.000000);
         $this->getValue()->shouldReturn('121');
     }
 
-    function it_returns_one_when_it_is_larger(FloatingPoint $precision)
+    function it_returns_one_when_it_is_larger(Calculator $calculator, FloatingPoint $precision)
     {
-        $this->beConstructedWith(121.9201347);
-        $precision->getValue()->willReturn(121.9201346890);
+        $this->beConstructedWith($calculator, 121.9201347);
+        $calculator->compare($this, $precision)->willReturn(1);
         $this->compare($precision, 10)->shouldReturn(1);
     }
 
@@ -66,10 +66,10 @@ class FloatingPointSpec extends ObjectBehavior
         $this->isEqualTo($precision)->shouldReturn(true);
     }
 
-    function it_returns_false_when_a_finite_number_is_compared_to_an_infinite_number(Calculator $calculator)
+    function it_returns_false_when_a_finite_number_is_compared_to_an_infinite_number()
     {
         $this->beConstructedWith(121.9201347);
-        $precision = new FloatingPoint($calculator, INF);
+        $precision = new FloatingPoint(INF);
         $this->isGreaterThan($precision)->shouldReturn(false);
     }
 }

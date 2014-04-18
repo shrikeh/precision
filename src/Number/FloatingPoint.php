@@ -1,17 +1,23 @@
 <?php
 namespace Shrikeh\Precision\Number;
 
-use \Shrikeh\Precision\Number;
 use \Shrikeh\Precision\Calculator;
-use \Shrikeh\Precision\Calculator\BCMath;
+use \Shrikeh\Precision\Number;
 
 class FloatingPoint implements Number
 {
-    private $calculator;
+    use \Shrikeh\Precision\Traits\CalculableNumber;
+    use \Shrikeh\Precision\Traits\ComparableNumber;
+    use \Shrikeh\Precision\Traits\EmbeddedCalculator;
 
     private $value;
 
-    public function __construct($value, $calculator = null)
+    public static function match($value)
+    {
+        return true;
+    }
+
+    public function __construct(Calculator $calculator, $value)
     {
         $this->calculator = $calculator;
         $this->value = $value;
@@ -24,7 +30,27 @@ class FloatingPoint implements Number
 
     public function isInfinite()
     {
-        return ($this->value === INF);
+        return false;
+    }
+
+    public function isPositive()
+    {
+        return ($this->compare($this, $this->zero()) === Number::GREATER_THAN);
+    }
+
+    public function isNegative()
+    {
+        return ($this->compare($this, $this->zero()) === Number::LESS_THAN);
+    }
+
+    public function isZero()
+    {
+        return false;
+    }
+
+    public function isFloat()
+    {
+        return true;
     }
 
     public function getValue()
@@ -32,71 +58,21 @@ class FloatingPoint implements Number
         return (string) $this->value;
     }
 
-    public function isEqualTo(Number $number, $scale = null)
+    public function negate()
     {
-        return ($this->compare($number, $scale) === 0);
+        return $this->multiply(new self('-1'));
     }
 
-    public function isGreaterThan(Number $number, $scale = null)
+    public function abs()
     {
-        return ($this->compare($number, $scale) === 1);
-    }
-
-    public function isLessThan(Number $number, $scale = null)
-    {
-        return ($this->compare($number, $scale) === -1);
-    }
-
-    public function compare(Number $number, $scale = null)
-    {
-        return $this->getCalculator()->compare(
-            $this,
-            $number,
-            $scale
-        );
-    }
-
-    public function add(Number $precision, $scale = null)
-    {
-        return $this->getCalculator()->add(
-            $this,
-            $precision,
-            $scale
-        );
-    }
-
-    public function subtract(Number $precision, $scale = null)
-    {
-        return $this->getCalculator()->subtract(
-            $this,
-            $precision,
-            $scale
-        );
-    }
-
-    public function divide(Number $precision, $scale = null)
-    {
-        return $this->getCalculator()->divide(
-            $this,
-            $precision,
-            $scale
-        );
-    }
-
-    public function multiply(Number $precision, $scale = null)
-    {
-        return $this->getCalculator()->multiply(
-            $this,
-            $precision,
-            $scale
-        );
-    }
-
-    public function getCalculator()
-    {
-        if (!$this->calculator) {
-            $this->calculator = new BCMath();
+        if ($this->isNegative()) {
+            return $this->negate();
         }
-        return $this->calculator;
+        return clone $this;
+    }
+
+    private function zero()
+    {
+        return $this->getCalculator()->create(0);
     }
 }
