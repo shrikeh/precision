@@ -1,44 +1,50 @@
 <?php
 namespace Shrikeh\Precision\Calculator\Engine;
 
-use \Shrikeh\Precision\Calculator\CalculatorEngine;
 use \Shrikeh\Precision\Number;
+use \Shrikeh\Precision\Calculator\CalculatorEngine;
+use \Shrikeh\Precision\Calculator\Engine\FunctorEngine;
+use \Shrikeh\Precision\NumberFactory;
 
 class Infinite implements CalculatorEngine
 {
-    private $functors;
+    private $factory;
+    private $functorEngine;
 
-    public function __construct(FunctorFactory $functorFactory)
-    {
-        $this->functors = $functorFactory;
+    public function __construct(
+        NumberFactory $factory,
+        FunctorEngine $functorEngine
+    ) {
+        $this->factory          = $factory;
+        $this->functorEngine    = $functorEngine;
     }
 
-    public function compare(Number $leftOperand, Number $rightOperand, $precision)
-    {
-
-    }
-
-    public function divide(Number $leftOperand, Number $rightOperand, $precision)
-    {
-
-    }
-
-    public function multiply(Number $leftOperand, Number $rightOperand, $precision)
+    public function compare(Number $leftOperand, Number $rightOperand, $scale)
     {
 
     }
 
-    public function add(Number $leftOperand, Number $rightOperand, $precision)
+    public function divide(Number $leftOperand, Number $rightOperand, $scale)
     {
 
     }
 
-    public function subtract(Number $leftOperand, Number $rightOperand, $precision)
+    public function multiply(Number $leftOperand, Number $rightOperand, $scale)
     {
 
     }
 
-    public function pow(Number $leftOperand, Number $rightOperand, $precision)
+    public function add(Number $leftOperand, Number $rightOperand, $scale)
+    {
+
+    }
+
+    public function subtract(Number $leftOperand, Number $rightOperand, $scale)
+    {
+
+    }
+
+    public function pow(Number $leftOperand, Number $rightOperand, $scale)
     {
 
     }
@@ -53,10 +59,15 @@ class Infinite implements CalculatorEngine
     {
         $isInfinite = false;
         foreach ($numbers as $number) {
-            if ($number->isInfinite()) {
+            if ($this->validateNumber($number)) {
                 $isInfinite = true;
             }
         }
         return $isInfinite;
+    }
+
+    private function validateNumber(Number $number)
+    {
+        return ($number->isInfinite());
     }
 }

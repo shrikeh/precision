@@ -1,11 +1,11 @@
 <?php
-namespace Shrikeh\Precision\Calculator\Engine\BCMath;
+namespace Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor\BCMath;
 
-use \Shrikeh\Precision\Calculator\Engine\Functor\NamedFunctor;
+use \Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor\NamedFunctor;
 
 class Subtract implements NamedFunctor
 {
-    use \Shrikeh\Precision\Calculator\Engine\Functor\NamedTrait;
+    use \Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor\NamedTrait;
 
     public function __invoke($leftOperand, $rightOperand, $scale = 0)
     {

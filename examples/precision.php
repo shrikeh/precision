@@ -3,17 +3,30 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $container = new Shrikeh\Precision\Precision();
 
-$calculator = $container['calculator'];
+$calc = $container['calculator'];
 
+$number = $calc(23);
 
-$number = $calculator(23);
-
-$multiply = $calculator(7);
+$multiply = $calc(7.9756);
 
 $result = $number->multiply($multiply);
 
-echo $result;
+echo "$result\n"; // will print out 183.43
 
-$zero = $calculator(0);
+$calc->setDefaultScale(4);
 
-echo $result->compare($zero);
+$result = $number->multiply($multiply);
+
+echo "$result\n"; // will print out 183.4388
+
+$calc->setDefaultScale(3);
+
+$result = $number->multiply($multiply);
+
+echo "$result\n"; // will print out 183.439
+
+$zero = $calc(0);
+
+$compare = $result->compare($zero);
+echo "$compare\n";
+

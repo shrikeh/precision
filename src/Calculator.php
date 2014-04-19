@@ -7,6 +7,8 @@ interface Calculator
 
     public function create($number);
 
+    public function setDefaultScale($value);
+
     public function compare(Number $number, Number $muliplier, $scale = null);
 
     public function add(Number $number, Number $muliplier, $scale = null);

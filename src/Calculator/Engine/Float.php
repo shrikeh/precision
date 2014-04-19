@@ -3,102 +3,82 @@ namespace Shrikeh\Precision\Calculator\Engine;
 
 use \Shrikeh\Precision\Number;
 use \Shrikeh\Precision\Calculator\CalculatorEngine;
-use \Shrikeh\Precision\Calculator\Engine\FunctorFactory;
+use \Shrikeh\Precision\Calculator\Engine\FunctorEngine;
+use \Shrikeh\Precision\NumberFactory;
 
 
 class Float implements CalculatorEngine
 {
-    private $functors;
+    private $factory;
 
-    public function __construct(FunctorFactory $functorFactory)
-    {
-        $this->functors = $functorFactory;
+    private $functorEngine;
+
+    public function __construct(
+        NumberFactory $factory,
+        FunctorEngine $functorEngine
+    ) {
+        $this->factory          = $factory;
+        $this->functorEngine    = $functorEngine;
     }
 
-    public function compare(
-        Number $leftNumber,
-        Number $rightNumber,
-        $scale = 0
-    )
+    public function compare(Number $number, Number $comparison, $scale)
     {
-        return $this->performCallback(FunctorFactory::COMPARE, $leftNumber, $rightNumber, $scale);
+        return $this->getResult('compare', $number, $comparison, $scale);
     }
 
-    public function add(
-        Number $leftNumber,
-        Number $rightNumber,
-        $scale = 0
-    )
+    public function add(Number $number, Number $addend, $scale)
     {
-        return $this->performCallback(FunctorFactory::ADD, $leftNumber, $rightNumber, $scale);
+        return $this->getResult('add', $number, $addend, $scale);
     }
 
-    public function subtract(
-        Number $leftNumber,
-        Number $rightNumber,
-        $scale = 0
-    )
+    public function subtract(Number $minuend, Number $subtrahend, $scale)
     {
-        return $this->performCallback(FunctorFactory::SUBTRACT, $leftNumber, $rightNumber, $scale);
+        return $this->getResult('subtract', $minuend, $subtrahend, $scale);
     }
 
-    public function multiply(
-        Number $leftNumber,
-        Number $rightNumber,
-        $scale = 0
-    )
+    public function divide(Number $dividend, Number $divisor, $scale)
     {
-        return $this->performCallback(FunctorFactory::MULTIPLY, $leftNumber, $rightNumber, $scale);
+        return $this->getResult('divide', $dividend, $divisor, $scale);
     }
 
-    public function divide(
-        Number $leftNumber,
-        Number $rightNumber,
-        $scale = 0
-    )
+    public function multiply(Number $multiplicand, Number $multiplier, $scale)
     {
-        return $this->performCallback(FunctorFactory::DIVIDE, $leftNumber, $rightNumber, $scale);
+        return $this->getResult('multiply', $multiplicand, $multiplier, $scale);
     }
 
-    public function round(
-        Number $leftNumber,
-        $scale = 0
-    )
+    public function round(Number $number, $scale)
     {
-        return $this->functors[FunctorFactory::ROUND]($leftNumber, $scale);
+        $value      = $number->getValue();
+        $result     = $this->functorEngine->round($value, $scale);
+        return $this->factory->create($result);
     }
 
-    public function pow(
-        Number $number,
-        Number $exponent,
-        $scale = 0)
-    {
-        return $this->performCallback(FunctorFactory::POW, $number, $exponent, $scale);
-    }
-
-    public function mod(
-        Number $number,
-        Number $exponent,
-        $scale = 0)
-    {
-        return $this->performCallback(FunctorFactory::MOD, $number, $exponent, $scale);
-    }
-
-    public function validate(array $args)
+    public function validate(array $numbers)
     {
         $isFloat = false;
-        foreach ($args as $arg) {
-            if ($arg->isFloat()) {
+        foreach ($numbers as $number) {
+            if ($this->validateNumber($number)) {
                 $isFloat = true;
             }
         }
         return $isFloat;
     }
 
-    private function performCallback($callback, $leftNumber, $rightNumber, $scale)
+    private function validateNumber(Number $number)
     {
-        $leftOperand = $leftNumber->getValue();
-        $rightOperand = $rightNumber->getValue();
-        return $this->functors[$callback]($leftOperand, $rightOperand, $scale);
+        return ($number->isFloat());
+    }
+
+    private function getResult(
+        $callback,
+        Number $leftNumber,
+        Number $rightNumber,
+        $scale
+    ) {
+        $leftOperand    = $leftNumber->getValue();
+        $rightOperand   = $rightNumber->getValue();
+        $result         = $this->functorEngine->$callback($leftOperand, $rightOperand, $scale);
+
+        return $this->factory->create($result);
     }
 }

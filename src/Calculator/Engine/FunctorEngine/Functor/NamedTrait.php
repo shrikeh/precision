@@ -1,5 +1,5 @@
 <?php
-namespace Shrikeh\Precision\Calculator\Engine\Functor;
+namespace Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor;
 
 trait NamedTrait
 {

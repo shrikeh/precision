@@ -28,6 +28,11 @@ class Zero implements Number, DeterministicNumber
         $this->calculator = $calculator;
     }
 
+    public function __toString()
+    {
+        return (string) $this->getValue();
+    }
+
     public function getValue()
     {
         return $this->value;

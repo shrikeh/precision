@@ -52,4 +52,9 @@ class NotANumber implements Number, DeterministicNumber
     {
         return false;
     }
+
+    public function isFloat()
+    {
+        return false;
+    }
 }

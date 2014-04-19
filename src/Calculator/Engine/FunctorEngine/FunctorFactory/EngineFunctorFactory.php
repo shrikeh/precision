@@ -1,7 +1,7 @@
 <?php
-namespace Shrikeh\Precision\Calculator\Engine\FunctorFactory;
+namespace Shrikeh\Precision\Calculator\Engine\FunctorEngine\FunctorFactory;
 
-use \Shrikeh\Precision\Calculator\Engine\FunctorFactory;
+use \Shrikeh\Precision\Calculator\Engine\FunctorEngine\FunctorFactory;
 
 class EngineFunctorFactory implements FunctorFactory
 {
