@@ -3,7 +3,8 @@ namespace Shrikeh\Precision\Calculator;
 
 use \Closure;
 use \Shrikeh\Precision\Calculator as CalculatorInterface;
-use Shrikeh\Precision\Number;
+use \Shrikeh\Precision\Calculator\Rounding\RoundUp;
+use \Shrikeh\Precision\Number;
 
 /**
  * Class Calculator
@@ -39,7 +40,7 @@ class Calculator implements CalculatorInterface
      */
     public function __construct(
         Closure $numberFactory,
-        $engines = array(),
+        $engines,
         $defaultScale
     ) {
         $numberFactory = $numberFactory->bindTo($this, $this);
@@ -170,7 +171,8 @@ class Calculator implements CalculatorInterface
      */
     public function round(Number $number, $scale)
     {
-        return $this->unary('round', $number, $scale);
+        $roundedValue = $this->getRounder($scale)->round($number->getValue());
+        return $this->create($roundedValue);
     }
 
     /**
@@ -202,21 +204,6 @@ class Calculator implements CalculatorInterface
 
     /**
      * @param        $engineCallback
-     * @param Number $number
-     * @param        $scale
-     *
-     * @return mixed
-     */
-    private function unary($engineCallback, Number $number, $scale)
-    {
-        return $this->getEngine($number)->$engineCallback(
-            $number,
-            $this->scale($scale)
-        );
-    }
-
-    /**
-     * @param        $engineCallback
      * @param Number $leftNumber
      * @param Number $rightNumber
      * @param        $scale
@@ -225,11 +212,10 @@ class Calculator implements CalculatorInterface
      */
     private function binary($engineCallback, Number $leftNumber, Number $rightNumber, $scale)
     {
-
         return $this->getEngine($leftNumber, $rightNumber)->$engineCallback(
             $leftNumber,
             $rightNumber,
-            $this->scale($scale)
+            $this->getRounder($scale)
         );
     }
 
@@ -260,11 +246,11 @@ class Calculator implements CalculatorInterface
      *
      * @return int
      */
-    private function scale($scale = null)
+    private function getRounder($scale = null)
     {
         if (null === $scale) {
             $scale = $this->getDefaultScale();
         }
-        return (int) $scale;
+        return new RoundUp($scale);
     }
 }

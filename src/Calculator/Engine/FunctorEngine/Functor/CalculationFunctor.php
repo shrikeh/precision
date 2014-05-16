@@ -1,7 +1,7 @@
 <?php
 namespace Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor;
 
-interface NamedFunctor
+interface CalculationFunctor
 {
     public function getName();
 }

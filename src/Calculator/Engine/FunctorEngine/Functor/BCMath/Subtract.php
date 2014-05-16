@@ -1,9 +1,9 @@
 <?php
 namespace Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor\BCMath;
 
-use \Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor\NamedFunctor;
+use \Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor\CalculationFunctor;
 
-class Subtract implements NamedFunctor
+class Subtract implements CalculationFunctor
 {
     use \Shrikeh\Precision\Calculator\Engine\FunctorEngine\Functor\NamedTrait;
 

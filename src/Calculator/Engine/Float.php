@@ -1,7 +1,9 @@
 <?php
 namespace Shrikeh\Precision\Calculator\Engine;
 
+use Shrikeh\Precision\Calculator\CalculationFactory;
 use \Shrikeh\Precision\Number;
+use \Shrikeh\Precision\Calculator\Rounder;
 use \Shrikeh\Precision\Calculator\CalculatorEngine;
 use \Shrikeh\Precision\Calculator\Engine\FunctorEngine;
 use \Shrikeh\Precision\NumberFactory;
@@ -9,48 +11,40 @@ use \Shrikeh\Precision\NumberFactory;
 
 class Float implements CalculatorEngine
 {
-    private $factory;
+    private $calculationFactory;
 
     private $functorEngine;
 
     public function __construct(
-        NumberFactory $factory,
         FunctorEngine $functorEngine
     ) {
-        $this->factory          = $factory;
-        $this->functorEngine    = $functorEngine;
+        $this->calculationFactory   = new CalculationFactory();
+        $this->functorEngine        = $functorEngine;
     }
 
-    public function compare(Number $number, Number $comparison, $scale)
+    public function compare(Number $number, Number $comparison, Rounder $rounder)
     {
-        return $this->getResult('compare', $number, $comparison, $scale);
+        return $this->getCalculation('compare', $number, $comparison, $rounder);
     }
 
-    public function add(Number $number, Number $addend, $scale)
+    public function add(Number $number, Number $addend, Rounder $rounder)
     {
-        return $this->getResult('add', $number, $addend, $scale);
+        return $this->getCalculation('add', $number, $addend, $rounder);
     }
 
-    public function subtract(Number $minuend, Number $subtrahend, $scale)
+    public function subtract(Number $minuend, Number $subtrahend, Rounder $rounder)
     {
-        return $this->getResult('subtract', $minuend, $subtrahend, $scale);
+        return $this->getCalculation('subtract', $minuend, $subtrahend, $rounder);
     }
 
-    public function divide(Number $dividend, Number $divisor, $scale)
+    public function divide(Number $dividend, Number $divisor, Rounder $rounder)
     {
-        return $this->getResult('divide', $dividend, $divisor, $scale);
+        return $this->getCalculation('divide', $dividend, $divisor, $rounder);
     }
 
-    public function multiply(Number $multiplicand, Number $multiplier, $scale)
+    public function multiply(Number $multiplicand, Number $multiplier, Rounder $rounder)
     {
-        return $this->getResult('multiply', $multiplicand, $multiplier, $scale);
-    }
-
-    public function round(Number $number, $scale)
-    {
-        $value      = $number->getValue();
-        $result     = $this->functorEngine->round($value, $scale);
-        return $this->factory->create($result);
+        return $this->getCalculation('multiply', $multiplicand, $multiplier, $rounder);
     }
 
     public function validate(array $numbers)
@@ -64,21 +58,29 @@ class Float implements CalculatorEngine
         return $isFloat;
     }
 
+    private function getCalculationFactory()
+    {
+        return $this->calculationFactory;
+    }
+
     private function validateNumber(Number $number)
     {
         return ($number->isFloat());
     }
 
-    private function getResult(
+    private function getCalculation(
         $callback,
         Number $leftNumber,
         Number $rightNumber,
-        $scale
+        Rounder $rounder
     ) {
-        $leftOperand    = $leftNumber->getValue();
-        $rightOperand   = $rightNumber->getValue();
-        $result         = $this->functorEngine->$callback($leftOperand, $rightOperand, $scale);
+        $functor = $this->functorEngine->$callback;
 
-        return $this->factory->create($result);
+        $calculation = function($scale) use ($functor, $leftNumber, $rightNumber) {
+            $leftOperand    = $leftNumber->getValue();
+            $rightOperand   = $rightNumber->getValue();
+            return $functor($leftOperand, $rightOperand, $scale);
+        };
+        return $this->getCalculationFactory()->calculation($calculation);
     }
 }
