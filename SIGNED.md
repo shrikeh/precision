@@ -3,19 +3,19 @@
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAABAgAGBQJTqtstAAoJEE4AEBkkrX9/ZWsP/Rbrg2pzrLtoU2zQfrFyB29K
-GFcKKJoqglpbgr7Ao00pHCJhlZzkxrc7Cz3F8u6TKFLQ2LVOa0jdPlThhLsEDHCS
-FPOANG1GbGOK8Lx8Pzzqe3C3Jwt7wzTdgxHEuJ4/qnNTOBJ5CNIHePtvGG3rJEE1
-9yWrD5DH67Bn5XArFRUcPogfsg5in1T51L8WkKbPmWGESqsfufjsMGICkkJ+ziZA
-xqXWW4cvUq9+D0sQrgnZoS01HAKUtDSahG+BMTO4dAYPpGs4BvaPz92BQ1lRXBe4
-XubQ/8jfursAhSZHV8MqwvUEJEolAtpkqrtlky8aZM6/RhoHqggY3mE3d/kJqsgX
-Zvqb55B8DqKnVnjMJEMbuuH6rSKfKcvcbDLWuaPOMCDCZ8oLXTM2HZu9YheTKQcS
-A7abxylSMqE7j8uLHYSml5akabqcQCI5i3ReQb++7PEllpqiYK99ivv2JIGdUUzI
-3x1/jTFgCt52cE/sCYZ8gTUvIWWwEaCeWIhA18rgVH37zH7FazP3FY+EqF7N4mwk
-vUvWvfXuSmQI2Nqw8fjHJVtP2f4EGpy70iDlsUxGkGEvA+0Ol+95c928oQVWODyo
-3zXTSCBSGprykPj/g5byz6YK//mdEYtY2GX0o/pLPWhXV8DwH2ZKPtVMsA5QlIRX
-6JHcBsbkRgKKTSoyifdF
-=a/34
+iQIcBAABAgAGBQJTqup+AAoJEE4AEBkkrX9/Yn8QAIG4p9pMF2eJ+jXgr55dend4
+5p8UYFFKDTKVvC1s9D1sarJGEbO+C+SFY2fqIweM+YVViysZLIBW1iVu8KKuwcD3
+m/A/ay/HTHpBcYIjQdJVo3zxnTWb+JAsvNv5BN41M/zrRhlayUY1xWSW5FTufMau
+80mtvXuD8z628GHH50NlW3vMfYPQDA/y6S3zyzgJE8413Pm9fyDHOJXFM9iSNGjv
+5uh+eg90uuOg0yTARlmma5xsun2RtMW+9MdjCmghkXTgMfahnRjuKoNaSOQIPnAa
+CQeydm80eBLOEfw0cPl3j2u7/3W2YoMUkNqy+00p0KFbI0/68kMpFSscolIpUQUq
+QkDrTdDwD2aww1UewlfoQ/gHyv74D0r8QcVz0Cac/IeYSf54aBilEaHXnL0itk2+
+9t5NugcP6uz9kbcvS+OzrCllRXv1I673Bs8KfgLMbHkEgda8S8RYPMhErPiZZTvF
++rEkrpTFb3rtOqVjs0XlQjMVtbszC/i30ho6kaUzZkHZvdmcqmZ+5zqtZlCuSinV
+ZWzvPjt8RtwamxFcmjW0lOf3HP/dJod+qFFYFNxGmnXdu9e6IIPhw3sZsisjzIlk
+H331xRihe/dgCx/yS770Bn6BQS24S2JZewbyxkjPDHMOrjrN3VwbbOSezlYqNAqb
+7vXOjcCVUhSF0UFIlgh5
+=+3gH
 -----END PGP SIGNATURE-----
 
 ```
@@ -43,8 +43,8 @@ size   exec  file                                          contents
 166              vcs.xml                                   3a66f97c1066f54fd5a87d7479cad20846e0b65727b62184c9d75a46e4a4c6d9
 18403            workspace.xml                             88a5043f27fca1d368c1bbbb38e1797218ad557e7d6b08616b54d71e6a0d95e1
 4051           .scrutinizer.yml                            5e3067299aec131290d039244af19b22a6873b3d6051c639fa02c9c60122c523
-240            .travis.yml                                 0a536c409301c31ec9be8bfb2b4f339b8e176d790ab7194c60ce830af4c6f952
-1317           README.md                                   1f0b02ac805644a00a015c9b3f3d31002fce5081dabd320b7024b92d1cf9a281
+234            .travis.yml                                 839ef3d002f4941fad6a950419f0717db94a50e94101502e77f34679c00fc23a
+1322           README.md                                   f146acbeee7f8b61ad202e22f4f1cd08c890ef9ea88ade0a7605b51faec261b8
 1048           composer.json                               105602ec9831693764430f9220b9e42de378858d0a06334bb3ce5e0a4d619613
 47741          composer.lock                               0067b12ed67f26c19f87067deccc026c77465a387691d871a30fe82c859e07ca
                examples/                                                                                                   
