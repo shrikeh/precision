@@ -6,7 +6,6 @@ use \Shrikeh\Precision\Number;
 
 trait CalculableNumber
 {
-    private $calculator;
 
     public function add(Number $precision, $scale = null)
     {
