@@ -13,13 +13,13 @@
     ],
     "require": {
         "php":                          ">=5.4",
-        "pimple/pimple":                "2.0.*@dev",
+        "pimple/pimple":                "~2",
         "ext-bcmath":                   "*"
     },
     "require-dev": {
         "phpspec/phpspec":              "2.0.*@dev",
         "phploc/phploc":                ">=1.7.4",
-        "pdepend/pdepend":              "1.1.3",
+        "pdepend/pdepend":              "~2",
         "sebastian/phpcpd":             "2.0.*@dev",
         "mayflower/php-codebrowser":    "~1.1",
         "phpmd/phpmd" :                 ">=1.4.0",
