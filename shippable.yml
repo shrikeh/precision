@@ -1,0 +1,21 @@
+---
+# Build Environment
+build_environment: ubuntu1310
+
+  # language setting
+language: php
+  # php tag
+php:
+ - 5.3
+ - 5.4
+ - 5.5
+ - 5.6
+ - hhvm
+ 
+before_script:
+  - curl -sS https://getcomposer.org/installer | php
+  - pecl install bcmath
+  - php composer.phar install 
+   
+
+script: bin/phpspec run
