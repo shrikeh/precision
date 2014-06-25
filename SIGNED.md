@@ -3,19 +3,19 @@
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAABAgAGBQJTqs2uAAoJEE4AEBkkrX9/dLwQAJ+h3Pt972ZtMI5vRr3IFtUn
-FfORYJ+RvGlEGQzyBXhnAc8ZE9Fmg+ZSPE92ePw/AeRVxpP7+eEz7RTLwFKJYsHg
-ABMKZ20JwTi2y/08w3M4tKLcQovDOF7OoeSsKw5a5c0g2ckPsRbt0nn6EA7a4tM0
-qFZJSvx/6EgQrO4hO9xBgLKTlairtvTjJTAZlmAXjoYTio/PJxeZdGs6T4E+9/qa
-EwT3rlxmqpoFa2fmY6Q/MS+/M0mQmhiwWyW6ZalaOufW6unkk/HXWJPn4H348tL6
-+MSG/EUpIffY6OGSX2eo/W3pPHdyfOSIoP5NkjwU1GzgKPQO8VbCXSCJeY2HqLah
-SdzMHB9LEX0A7eJcYGZ7cqMHrTczY3JgHjUkV2AEznck9CPgvkL4BtvIWC53rgOf
-uB2ulOPacHLWDR7R02ca+GD5yNxSHkdJvuCE9tth1EcJ7gyMb9sEG1kAlybSdPRA
-DEIIxqfj9v4yKbYoRhj+QhRwWuRKG1p3BtIk/WBExKuVr1UFVOH6JVe0kBSBIwWe
-YRkmEwW1d+pDW+xJLXSBRBPGqxv+s01fd/HhK0+NeqXwWHzG7XmEuv0pX/+8cLPp
-9dnUvtcPeVGACtAy9nfBDFke3AgjsLr69sIImHF5aD0edmzKGHLnHkAc6+fM8Uo/
-YSDtBSecWIkuOpC1LrKG
-=KnXD
+iQIcBAABAgAGBQJTqtChAAoJEE4AEBkkrX9/W3cQAKxF9Au33JhKcXfdnLcIQmYI
+67cgUY1iuSKDYp47xpoh0kqEZ8ItQsltEFcpoFB7mbwgbVfSKOprgD3HAL/qELYb
+CpX4r5jzcQn7PHxuFdgmHnYWrjckVhrJ+5ElMizC/+ukbxylmxU4/xkgHnCocEHN
+y4RCbFIOKXaC9ZX02WpRRk7+RDzSofYJnWjR2NtjNGdea6CLNF82I5aIU4/os0Yu
+pXZh8dSr93LDs3kT08Lz2kdaIo/f8r9ECR1ZPBSfZg03aMf7+YMYLqHZQp2B4EMW
+wcT0Mz0FDEHooKCSP0oGm4sT/fu8nLlgwFFfJtV6fxfTmGQgkvv7nSgT9+VZjav/
+s2NmpJ7XPB8S8a1f+GjDjkPbOqh7vLaBQbYM3FrcV4bMnppJNf5RqFMnZ+KXouwc
+D/0FIIZS2v2YMwo3eIJveuQYIM0UBIBI4rFdk1OM3oAnitVzrHD4YhR2zRHJaq5C
+8B/saXreMYy5D9LYXqQ/sKZrY4i7mb21ja/WxYpPwHByn0q5gScQ6sO6yueIb/at
+U+k0htO9uB9o51qktJ6KXNWwhFITmEfbkMoRUoqcLFE+2oI++rDkjCZDQrFMkYQ7
+tQOFaruXCTIUGeaxbDJ8+cr2iAw3MdOJRyny1Azfjkc14TKVESmmCfEtEw/ZcCXt
+3d13vihgXGY2a6eY+C4m
+=2a/O
 -----END PGP SIGNATURE-----
 
 ```
@@ -42,8 +42,7 @@ size   exec  file                                          contents
 139                scope_settings.xml                      c1818c37eb63a10bcd7c575502aff53cdbff43df30419ccd9c4f6bf7792af4d0
 166              vcs.xml                                   3a66f97c1066f54fd5a87d7479cad20846e0b65727b62184c9d75a46e4a4c6d9
 18403            workspace.xml                             88a5043f27fca1d368c1bbbb38e1797218ad557e7d6b08616b54d71e6a0d95e1
-75             .scrutinizer.yml                            da9a2af298d41b881938e47a1c4ba6c41af89791b34c5a6bfb88b2b161d8adc2
-4051           .scrutinizr.yml                             5e3067299aec131290d039244af19b22a6873b3d6051c639fa02c9c60122c523
+4051           .scrutinizer.yml                            5e3067299aec131290d039244af19b22a6873b3d6051c639fa02c9c60122c523
 240            .travis.yml                                 0a536c409301c31ec9be8bfb2b4f339b8e176d790ab7194c60ce830af4c6f952
 676            README.md                                   835ec5171b579df1caf94b4a699ff29773bba864ea6c85254604186b94786e95
 1048           composer.json                               105602ec9831693764430f9220b9e42de378858d0a06334bb3ce5e0a4d619613
