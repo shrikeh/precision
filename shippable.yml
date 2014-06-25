@@ -13,8 +13,8 @@ php:
  - hhvm
  
 before_script:
+  - echo "extension = bcmath.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - curl -sS https://getcomposer.org/installer | php
-  - pecl install bcmath
   - php composer.phar install 
    
 
